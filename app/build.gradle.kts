@@ -1,11 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
     namespace = "com.codshooter.porter"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.codshooter.porter"
@@ -20,7 +21,6 @@ android {
     buildFeatures{
         //noinspection DataBindingWithoutKapt
         dataBinding = true
-
     }
 
     buildTypes {
@@ -52,8 +52,14 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+
+    // nav graph
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
 
-    implementation (libs.material.v100)
+
+    // country code picker
+    implementation ("com.hbb20:ccp:2.7.3")
+
+
 }

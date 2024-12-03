@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.codshooter.porter.databinding.ActivityRegisterBinding
-import com.codshooter.porter.fragments.HomeFragment
 
-class Register : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(LayoutInflater.from(this))
@@ -20,8 +20,7 @@ class Register : AppCompatActivity() {
             val email = binding.etEmail.text.toString().trim()
             if (validateName(name) && validateEmail(email)) {
                 Toast.makeText(this, "Register Successfully!", Toast.LENGTH_SHORT).show()
-              val  intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this, HomeActivity::class.java))
             }
         }
     }
@@ -38,7 +37,6 @@ class Register : AppCompatActivity() {
             true
         }
     }
-
 
     private fun validateEmail(email: String): Boolean {
         val emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$"
