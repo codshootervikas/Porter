@@ -20,7 +20,7 @@ class Register : AppCompatActivity() {
             val email = binding.etEmail.text.toString().trim()
             if (validateName(name) && validateEmail(email)) {
                 Toast.makeText(this, "Register Successfully!", Toast.LENGTH_SHORT).show()
-                intent = Intent(this, HomeActivity::class.java)
+              val  intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
             }
         }

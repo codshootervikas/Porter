@@ -3,30 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/home"
         android:name="com.codshooter.porter.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/ordersFragment"
+        android:id="@+id/orders"
         android:name="com.codshooter.porter.fragments.OrdersFragment"
         android:label="fragment_orders"
         tools:layout="@layout/fragment_orders" />
     <fragment
-        android:id="@+id/coinsFragment"
+        android:id="@+id/coins"
         android:name="com.codshooter.porter.fragments.CoinsFragment"
         android:label="fragment_coins"
         tools:layout="@layout/fragment_coins" />
     <fragment
-        android:id="@+id/paymentsFragment"
+        android:id="@+id/payments"
         android:name="com.codshooter.porter.fragments.PaymentsFragment"
         android:label="fragment_payments"
         tools:layout="@layout/fragment_payments" />
     <fragment
-        android:id="@+id/accountFragment"
+        android:id="@+id/account"
         android:name="com.codshooter.porter.fragments.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />

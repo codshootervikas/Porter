@@ -2,8 +2,11 @@ package com.codshooter.porter.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.codshooter.porter.R
 import com.codshooter.porter.databinding.ActivityHomeBinding
 import com.codshooter.porter.fragments.AccountFragment
@@ -20,29 +23,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
-
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-
-        loadFragment(HomeFragment())
-
-        bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.home -> loadFragment(HomeFragment())
-                R.id.orders -> loadFragment(OrdersFragment())
-                R.id.coins -> loadFragment(CoinsFragment())
-                R.id.payments -> loadFragment(PaymentsFragment())
-                R.id.account -> loadFragment(AccountFragment())
-                else -> false
-            }
-            true
-        }
-    }
-
-    private fun loadFragment(fragment: Fragment): Boolean {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main, fragment)
-            .commit()
-        return true
 
     }
 }
