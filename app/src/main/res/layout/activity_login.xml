@@ -84,7 +84,8 @@
                         android:background="@drawable/edittext_shape"
                         app:ccp_showFlag="true"
                         app:ccp_showNameCode="false"
-                        app:ccp_showPhoneCode="true" />
+                        app:ccp_showPhoneCode="true"
+                        tools:ignore="MissingClass" />
 
                     <EditText
                         android:id="@+id/ePhone"

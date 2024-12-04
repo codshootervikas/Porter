@@ -3,16 +3,9 @@ package com.codshooter.porter.activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.codshooter.porter.R
 import com.codshooter.porter.databinding.ActivityHomeBinding
-import com.codshooter.porter.fragments.AccountFragment
-import com.codshooter.porter.fragments.CoinsFragment
-import com.codshooter.porter.fragments.HomeFragment
-import com.codshooter.porter.fragments.OrdersFragment
-import com.codshooter.porter.fragments.PaymentsFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -26,28 +19,28 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
-        navController.navigate(R.id.homeFragment)
+        navController.navigate(R.id.home)
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.homeFragment -> {
-                    navController.navigate(R.id.homeFragment)
+                R.id.home -> {
+                    navController.navigate(R.id.home)
                     true
                 }
-                R.id.ordersFragment -> {
-                    navController.navigate(R.id.ordersFragment)
+                R.id.orders -> {
+                    navController.navigate(R.id.orders)
                     true
                 }
-                R.id.coinsFragment -> {
-                    navController.navigate(R.id.coinsFragment)
+                R.id.coins -> {
+                    navController.navigate(R.id.coins)
                     true
                 }
-                R.id.paymentsFragment -> {
-                    navController.navigate(R.id.paymentsFragment)
+                R.id.payments -> {
+                    navController.navigate(R.id.payments)
                     true
                 }
-                R.id.accountFragment -> {
-                    navController.navigate(R.id.accountFragment)
+                R.id.account -> {
+                    navController.navigate(R.id.account)
                     true
                 }
                 else -> false

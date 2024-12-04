@@ -28,12 +28,9 @@ class MainActivity : AppCompatActivity() {
                     "Location and notification permissions are required to continue this app.",
                     Snackbar.LENGTH_SHORT
                 ).show()
-
                 handlePermissionDenied()
-
             }
         }
-
 
     private val locationNotificationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -84,8 +81,6 @@ class MainActivity : AppCompatActivity() {
             else
                 proceedToApp()
         }
-
-
     }
 
     private fun handlePermissionDenied() {
@@ -103,16 +98,14 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 dialog.dismiss()
             }
-
-
             .show()
     }
 
     private fun proceedToApp() {
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
-        }, 2000)
+        },2000)
     }
 
 
