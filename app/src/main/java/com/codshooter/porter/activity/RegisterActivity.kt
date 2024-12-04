@@ -6,9 +6,14 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.codshooter.porter.databinding.ActivityRegisterBinding
+import com.codshooter.porter.utils.LoginManager
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
+
+    private val loginManager by lazy {
+        LoginManager(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,10 +21,11 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.registerBtn.setOnClickListener {
-            val name = binding.etName.text.toString().trim()
+            val name = binding.firstNameEt.text.toString().trim() + " " + binding.lastNameEt.text.toString().trim()
             val email = binding.etEmail.text.toString().trim()
             if (validateName(name) && validateEmail(email)) {
                 Toast.makeText(this, "Register Successfully!", Toast.LENGTH_SHORT).show()
+                loginManager.setLogin(true)
                 startActivity(Intent(this, HomeActivity::class.java))
             }
         }

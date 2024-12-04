@@ -27,25 +27,18 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-
-        binding.ePhone.addTextChangedListener(object: TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun afterTextChanged(p0: Editable?) {
-               p0?.let { value ->
-                   if(value.isEmpty()){
-                       binding.loginBtn.visibility = View.GONE
-                   }else{
-                       binding.loginBtn.visibility = View.VISIBLE
-                   }
-               }
+        binding.ePhone.setOnFocusChangeListener { _, b ->
+            if (b) {
+                binding.loginBtn.visibility = View.VISIBLE
+            } else {
+                binding.loginBtn.visibility = View.GONE
             }
-        })
+        }
+
+
+
 
     }
-
 
     private fun isValidPhoneNumber(phoneNumber: String): Boolean {
         val regex = "^[6-9]\\d{9}$".toRegex()
