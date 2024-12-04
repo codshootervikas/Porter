@@ -7,10 +7,12 @@
 
     <item
         android:id="@+id/orders"
+        android:icon="@drawable/home"
         android:title="@string/orders" />
 
     <item
         android:id="@+id/coins"
+        android:icon="@drawable/home"
         android:title="@string/coins" />
 
     <item
@@ -20,6 +22,7 @@
 
     <item
         android:id="@+id/account"
+        android:icon="@drawable/home"
         android:title="@string/account" />
 
 

@@ -13,7 +13,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.codshooter.porter.activity.HomeActivity
 import com.codshooter.porter.activity.LoginActivity
+import com.codshooter.porter.utils.LoginManager
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -28,12 +30,9 @@ class MainActivity : AppCompatActivity() {
                     "Location and notification permissions are required to continue this app.",
                     Snackbar.LENGTH_SHORT
                 ).show()
-
                 handlePermissionDenied()
-
             }
         }
-
 
     private val locationNotificationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -51,6 +50,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    private val loginManager by lazy {
+        LoginManager(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +76,8 @@ class MainActivity : AppCompatActivity() {
                         Manifest.permission.POST_NOTIFICATIONS
                     )
                 )
+            else
+                proceedToApp()
         } else {
             if (ContextCompat.checkSelfPermission(
                     this,
@@ -84,8 +88,6 @@ class MainActivity : AppCompatActivity() {
             else
                 proceedToApp()
         }
-
-
     }
 
     private fun handlePermissionDenied() {
@@ -103,14 +105,15 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 dialog.dismiss()
             }
-
-
             .show()
     }
 
     private fun proceedToApp() {
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+            if (loginManager.getLogin())
+                startActivity(Intent(this, HomeActivity::class.java))
+            else
+                startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }, 2000)
     }
