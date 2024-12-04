@@ -16,4 +16,5 @@ class LoginManager(val context: Context) {
         return sharedPreferences.getBoolean("isNewUser", true)
     }
 
+
 }

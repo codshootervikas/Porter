@@ -3,8 +3,10 @@ package com.codshooter.porter.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.codshooter.porter.R
 import com.codshooter.porter.databinding.ActivityRegisterBinding
 import com.codshooter.porter.utils.LoginManager
 
@@ -20,8 +22,29 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
+
+
+        binding.languageDropDown.setDropDownBackgroundResource(R.color.white)
+        binding.languageDropDown.setAdapter<ArrayAdapter<*>>(
+            setUpSpinner(
+                mutableListOf(
+                    "Delivery",
+                    "Shopping",
+                    "Moving",
+                )
+            )
+        )
+        binding.languageDropDown.setOnItemClickListener { parent, _, position, _ ->
+            Toast.makeText(this, parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT)
+                .show()
+        }
+
+
+
+
         binding.registerBtn.setOnClickListener {
-            val name = binding.firstNameEt.text.toString().trim() + " " + binding.lastNameEt.text.toString().trim()
+            val name = binding.firstNameEt.text.toString()
+                .trim() + " " + binding.lastNameEt.text.toString().trim()
             val email = binding.etEmail.text.toString().trim()
             if (validateName(name) && validateEmail(email)) {
                 Toast.makeText(this, "Register Successfully!", Toast.LENGTH_SHORT).show()
@@ -29,6 +52,7 @@ class RegisterActivity : AppCompatActivity() {
                 startActivity(Intent(this, HomeActivity::class.java))
             }
         }
+
     }
 
     private fun validateName(name: String): Boolean {
@@ -56,4 +80,16 @@ class RegisterActivity : AppCompatActivity() {
             true
         }
     }
+
+    private fun setUpSpinner(data: MutableList<String>): ArrayAdapter<String> {
+        val myAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
+            this,
+            R.layout.custom_dropdown,
+            data
+        )
+        myAdapter.setDropDownViewResource(R.layout.custom_dropdown)
+        return myAdapter
+    }
+
+
 }

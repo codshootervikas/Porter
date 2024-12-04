@@ -16,7 +16,7 @@
     <string name="with_a_valid_number_you_can_access_deliveries_and_our_other_services">With a valid number, you can access deliveries, and our\nother services</string>
     <string name="a_one_time_password_otp_will_send_to_this_number_for_verification">A one time password(OTP)will send to this number for\nverification</string>
     <string name="whatsapp">Whatsapp</string>
-    <string name="allow_porter_to_send_updates_on">Allow Porter to send updates on</string>
+    <string name="allow_porter_to_send_updates_on">Allow Porter to send updates on </string>
     <string name="trucks">Trucks</string>
     <string name="images">images</string>
 </resources>
